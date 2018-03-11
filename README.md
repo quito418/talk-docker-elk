@@ -162,9 +162,9 @@ docker network create --driver bridge isolated_elk
 
 ### Install ELK stack on docker
 ```
-docker run -d --restart=always -v /var/docker/elasticsearch:/usr/share/elasticsearch/data --net=isolated_elk -p 127.0.0.1:9200:9200  -p 127.0.0.1:9300:9300 --name elasticsearch elasticsearch:2.3.2
+docker run -d --restart=always -v /var/docker/elasticsearch:/usr/share/elasticsearch/data --net=isolated_elk -p 127.0.0.1:9200:9200  -p 127.0.0.1:9300:9300 --name elasticsearch elasticsearch:5.4.3
 
-docker run -d --restart=always --link elasticsearch --net=isolated_elk -p 127.0.0.1:5601:5601 --name kibana kibana:4.5.1
+docker run -d --restart=always --link elasticsearch --net=isolated_elk -p 127.0.0.1:5601:5601 --name kibana kibana:5.4
 
 docker run -d --restart=always --link elasticsearch:db -v /var/docker/logstash:/conf --net=isolated_elk -p 127.0.0.1:25826:25826 --name logstash logstash:2.3.2-1 logstash -f /conf/syslog.conf
 ```
